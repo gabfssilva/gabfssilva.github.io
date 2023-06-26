@@ -10,7 +10,7 @@ Firstly, let's clarify some essential AMQP concepts. However, if you're already 
 
 # Basic AMQP Concepts
 
-#### Nomenclature
+## Nomenclature
 
 In AMQP, Virtual Hosts, Exchanges, Queues, and Routing Keys should be written in lowercase, with words separated by dots. For instance:
 
@@ -21,15 +21,15 @@ dark.blue
 green.dark.blue
 ```
 
-#### Virtual Hosts
+## Virtual Hosts
 
 Virtual Hosts serve to isolate resources. A specific resource, such as exchanges or queues, can be used by more than one virtual host.
 
-#### Routing Keys
+## Routing Keys
 
 Routing keys are strings provided by the producer and used by exchanges to redirect messages to queues. Note that not all exchanges use routing keys for message routing.
 
-#### Exchanges
+## Exchanges
 
 Exchanges act as the postmen of the system; they receive and redirect messages to queues. An exchange doesn't hold messages; it only disseminates them.
 
@@ -43,19 +43,19 @@ Exchanges act as the postmen of the system; they receive and redirect messages t
 
 **Header:** Header exchanges function like direct exchanges, but instead of using a routing key to match bindings, they use the headers from the sent message.
 
-#### Queues
+## Queues
 
 A queue stores and sends messages to consumers. You should always send a message to an exchange, which then redirects to the appropriate queue(s).
 
-#### Bindings
+## Bindings
 
 You can bind either exchanges to queues or exchanges to other exchanges. If the exchange is not fanout, the binding will use routing keys or headers; otherwise, there's no need for routing information.
 
-#### Consumers
+## Consumers
 
 Consumers listen to queues and receive messages from them.
 
-**Acknowledgement**
+## Acknowledgement
 
 Acknowledgement can be set to either automatic or manual mode. In automatic mode, as soon as a consumer receives a message, the broker marks it as consumed. In manual mode, it waits until you acknowledge the message.
 
@@ -63,15 +63,15 @@ Acknowledgement can be set to either automatic or manual mode. In automatic mode
 
 With a solid understanding of the above concepts, we can now advance into designing APIs with AMQP.
 
-#### Scenario
+## Scenario
 
 To give a practical example, let's consider a simple scenario: **credit card transactions**. We will create three services: **create**, **cancel**, and **fetch** transactions. Additionally, we'll need to track the events from services that create side-effects, such as the **create** and **cancel** services.
 
-#### Exchanges as Domain Models
+## Exchanges as Domain Models
 
 For this simple scenario, our only domain model will be the **transaction** domain. Thus, that's the exchange we will create. For simplicity, let's use a **direct exchange**, which is well suited for this situation.
 
-#### Queues as Actions
+## Queues as Actions
 
 The actions we need to perform are: create, cancel, or fetch a transaction. Hence, we can conceive of each of these actions as a different queue:
 
@@ -91,11 +91,11 @@ save.transaction.side.effect.event
 
 You're likely to send a message with a 'X-Reply-To' header, providing a routing key for the 'fetch.transaction' queue consumer to reply whether there's a transaction for you to consume. If you'd prefer not to, there's no issue with creating HTTP services to fetch resources instead of using AMQP services.
 
-#### Routing Keys as Operations
+## Routing Keys as Operations
 
 Our operations - **create, cancel, and fetch** - will each be a routing key.
 
-#### Bindings
+### Bindings
 
 This is where everything comes together. Depending on the routing key used (**create**, **cancel**, or **fetch**), we direct the message to the respective queue(s).
 
@@ -107,11 +107,11 @@ Here's a clean representation of the bindings:
 |transaction|cancel|cancel.transaction, save.transaction.side.effect.event|
 |transaction|fetch|fetch.transaction|
 
-#### So, do we forget about HTTP?
+### So, do we forget about HTTP?
 
 Not at all. HTTP is simpler and more widely understood than AMQP. Furthermore, "fetch" endpoints can be challenging to create with AMQP due to its asynchronous nature, requiring the creation of more "callback" consumers on the fly. As such, HTTP is often preferred. Remember, there's no silver bullet in tech. Both AMQP and HTTP can work together, and it's up to you to decide where to apply each.
 
-#### Wrapping Up
+# Wrapping Up
 
 I hope this post proves insightful. Learning how to design AMQP APIs wasn't a walk in the park for me, and I hope my experience can make your journey a little bit easier.
 

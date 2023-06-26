@@ -75,7 +75,7 @@ For this simple scenario, our only domain model will be the **transaction** doma
 
 The actions we need to perform are: create, cancel, or fetch a transaction. Hence, we can conceive of each of these actions as a different queue:
 
-```none
+```
 create.transaction
 cancel.transaction
 fetch.transaction
@@ -83,7 +83,7 @@ fetch.transaction
 
 Additionally, since we need to save events, we'll add one more queue:
 
-```none
+```
 save.transaction.side.effect.event
 ```
 

@@ -3,16 +3,16 @@
 #
 
 # Name of your site (displayed in the header)
-name: Reverie
+name: Gabriel Francisco
 
 # Name of the author
 author: Gabriel Francisco
 
 # Short bio or description (displayed in the header)
-description: An elegant Jekyll theme
+description: Some thoughts about software engineering.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: /images/reverie.png
+avatar: https://avatars.githubusercontent.com/u/5403842
 
 #
 # Flags below are optional

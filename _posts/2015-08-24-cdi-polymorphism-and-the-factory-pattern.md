@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Transforming Java's old Future into CompletableFuture
+title: CDI, Polymorphism and The Factory Pattern
 categories: [java, design pattern, java ee]
 ---
 

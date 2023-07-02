@@ -117,7 +117,29 @@ public class VisaPayment implements Payment {
 }
 ```
 
-Now, we can select a payment instance dynamically using CDI:
+In order to dynamically fetch instances, you also need to create an annotation literal, as shown below:
+
+```java
+public class NetworkAnnotationLiteral extends AnnotationLiteral<Network> implements Network {
+
+    private String value;
+
+    private NetworkAnnotationLiteral(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String value() {
+        return value;
+    }
+
+    public static NetworkAnnotationLiteral network(String value){
+        return new NetworkAnnotationLiteral(value);
+    }
+}
+```
+
+Now, we can select a payment instance using CDI:
 
 ```java
 @Inject @Any

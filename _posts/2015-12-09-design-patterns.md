@@ -6,7 +6,7 @@ categories: [java, design pattern, design patterns]
 
 As developers, we love solving intricate problems, and let's be honests, we love proposing intricate solutions as well. However, many of these problems have already been addressed by other people before us. Why should we spend time reinventing the wheel when we could leverage solutions that have proven their efficacy time and time again? This is where design patterns come into play.
 
-Despite their numerous advantages, some developers avoid using design patterns, largely due to unfamiliarity or uncertainty about how to appropriately apply them. So, is the question on your mind: are design patterns really that important? To this query, I respond emphatically: **yes, they are!**. Here are the three main reasons:
+Despite their numerous advantages, some developers avoid using design patterns, largely due to unfamiliarity or uncertainty about how to appropriately apply them. So, is the question on your mind: are design patterns really that important? To this query, I say emphatically: **yes, they are!**. Here are the three main reasons:
 
 1. **Time-saving**: Using design patterns avoids the need to craft a solution from scratch, saving you a substantial amount of time.
 2. **Standardization**: Design patterns are widely known. When you say "I used a factory to create that object," your fellow developers will immediately understand what you mean.
@@ -18,7 +18,7 @@ Let's start!
 
 ## Singleton
 
-Singleton is a prevalent pattern, with various frameworks like Spring, CDI (@ApplicationScoped), and EJBs (@Singleton) already incorporating it. However, understanding how it is implemented is essential.
+Singleton is a prevalent pattern, with various frameworks like Spring, CDI (`@ApplicationScoped`), and EJBs (`@Singleton`) already incorporating it. However, understanding how it is implemented is essential.
 
 ```java
 public class SingletonSample {
@@ -57,7 +57,7 @@ public class SingletonSample {
 }
 ```
 
-This pattern delays the instance's initialization until getInstance() is called and does so in a thread-safe manner.
+This pattern delays the instance's initialization until `getInstance()` is called and does so in a thread-safe manner.
 
 ## The Strategy and The Factory Pattern
 
@@ -254,7 +254,7 @@ By breaking down our code into Commands, we can isolate logic, reorganize it as 
 
 ## Template Method
 
-Leveraging polymorphism, the Template Method pattern is useful when we have a sequence of method calls that remain the same, but the specific behaviors within those methods may vary. 
+Another pattern that leverages polymorphism, the Template Method pattern is useful when we have a sequence of method calls that remain the same, but the specific behaviors within those methods may vary. 
 
 Here's an example:
 

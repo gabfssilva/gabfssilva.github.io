@@ -16,7 +16,7 @@ In this article, I'll be discussing some of the most useful design patterns and 
 
 Let's start!
 
-#### Singleton
+## Singleton
 
 Singleton is a prevalent pattern, with various frameworks like Spring, CDI (@ApplicationScoped), and EJBs (@Singleton) already incorporating it. However, understanding how it is implemented is essential.
 
@@ -38,7 +38,7 @@ public class SingletonSample {
 
 In essence, the Singleton pattern ensures that only one instance of a class is created at runtime. 
 
-#### Initialization on Demand Holder
+## Initialization on Demand Holder
 
 Similar to Singleton, the Initialization on Demand Holder has a critical advantage: it's thread-safe. Singleton's getInstance() method isn't thread-safe unless synchronized, which could slow it down.
 
@@ -59,7 +59,7 @@ public class SingletonSample {
 
 This pattern delays the instance's initialization until getInstance() is called and does so in a thread-safe manner.
 
-#### The Strategy and The Factory Pattern
+## The Strategy and The Factory Pattern
 
 These two patterns are incredibly useful, especially when combined. They allow the creation of objects based on a qualifier.
 
@@ -100,7 +100,7 @@ Building building = BuildingFactory.getBuilding("house");
 
 In this example, providing a building type will return the corresponding object, maximizing the use of polymorphism.
 
-#### Fluent Builder
+## Fluent Builder
 
 For objects that require numerous parameters, the builder pattern can keep your code clean and easy to understand.
 
@@ -201,7 +201,7 @@ Product product = Product.newProduct()
 
 Even though this class is relatively small and does not have many fields, the Fluent Builder pattern becomes especially handy as the complexity increases.
 
-### Chain of Responsibility
+## Chain of Responsibility
 
 The Chain of Responsibility pattern helps us manage complexity by breaking down our code into smaller, more manageable pieces, and organizing them in a sequence.
 
@@ -252,7 +252,7 @@ chain.start(context);
 
 By breaking down our code into Commands, we can isolate logic, reorganize it as needed, and decouple our code, making it more maintainable and easier to understand.
 
-### Template Method
+## Template Method
 
 Leveraging polymorphism, the Template Method pattern is useful when we have a sequence of method calls that remain the same, but the specific behaviors within those methods may vary. 
 
@@ -301,7 +301,7 @@ public class Cat extends Animal {
 }
 ```
 
-### State Pattern
+## State Pattern
 
 Many objects can have different states, like a radio that can be on or off. The State Pattern helps us model this in an object-oriented manner, making state management more manageable and less error-prone.
 
@@ -364,7 +364,7 @@ radio.execute(); //radio off
 
 This example simplifies the radio's state management. However, the State Pattern becomes incredibly valuable when managing an object with several possible states. You can define rules to create final states and states that require a previous state to be executed.
 
-### Conclusion
+## Conclusion
 
 Design patterns provide tested and efficient solutions to common software development problems. Understanding and implementing these patterns can result in cleaner, more maintainable, and easier-to-understand code, and you probably should embrace them.
 

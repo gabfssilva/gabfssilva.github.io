@@ -1,5 +1,3 @@
-# Kotlin Flow as an enterprise integration tool
-
 Kotlin Flow is a powerful reactive stream processing tool. Although not strictly based on the Reactive Streams specification, it's fully interoperable with it, and since it leverages coroutines, it makes it an incredibly fun tool to use. However, it is still not widely used for enterprise integration. I'm here to explain the whys and talk about how you can overcome these limitations and use Kotlin Flow as an ally when you're building enterprise integrations.
 
 ## Why Kotlin Flow?

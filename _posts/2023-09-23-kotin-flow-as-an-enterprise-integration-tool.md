@@ -29,7 +29,7 @@ queueFlow
     .collect { order -> log.info { "Order is successfully saved with id ${order.id}" } }
 ```
 
-You can make the processing concurrent by using `**flatMapMerge**`, but it's more verbose and you lose the original order of the elements.
+You can make the processing concurrent by using `flatMapMerge`, but it's more verbose and you lose the original order of the elements.
 
 In addition to concurrency, implementing operators for chunking messages, splitting elements, and processing until timeouts complete are tasks you'll likely need to handle yourself.
 
@@ -120,12 +120,15 @@ fun <T, R> Flow<T>.mapAsync(
     }
 ```
 
+Since coroutines enable the deferral of asynchronous processing, utilizing a semaphore in conjunction with async provides an ideal solution for implementing a concurrent `map` operator.
+
 Now, just like `map`, you can also use `mapAsync` to process your messages:
 
 ```kotlin
 val queueFlow: Flow<Message> = messageQueueFlow("hello-world-queue")
 
 queueFlow
+    // at most 10 concurrent executions
     .mapAsync(10) { message -> // do some heavy processing }
     .collect(...)
 ```
@@ -140,6 +143,8 @@ suspend fun <T> Flow<T>.collectAsync(
 ```
 
 The same can be done for `onEach`, `flatMap`, and so on.
+
+With a single line of code for each step, it is now possible to construct concurrent pipelines, with each step possessing its own level of concurrency.
 
 ## Integrating with other connectors
 

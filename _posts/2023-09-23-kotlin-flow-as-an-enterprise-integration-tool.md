@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Kotin Flow as an Enterprise Integration tool
+title: Kotlin Flow as an Enterprise Integration tool
 categories: [kotlin, async, nonblocking, reactive streams, reactive, flow, kotlin flow, coroutines, enterprise, integrations]
 ---
 
